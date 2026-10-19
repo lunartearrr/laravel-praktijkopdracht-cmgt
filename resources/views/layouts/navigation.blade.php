@@ -11,24 +11,29 @@
 
                 <div class="flex space-x-4 sm:space-x-8 sm:-my-px sm:ms-10">
                     <x-nav-link :href="route('home')" :active="request()->routeIs('home')"> {{ __('Home') }}</x-nav-link>
-
-                    @auth
-                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')"> {{ __('Dashboard') }}</x-nav-link>
-                    @endauth
-
                     <x-nav-link :href="route('about-us')" :active="request()->routeIs('about-us')"> {{ __('About us') }}</x-nav-link>
-
                     <x-nav-link :href="route('contact')" :active="request()->routeIs('contact')"> {{ __('Contact') }} </x-nav-link>
-
-                    @auth
-                    <x-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')"> {{ __('Profile') }} </x-nav-link>
-                    @endauth
-
-                    @guest
-                        <x-nav-link :href="route('login')" :active="request()->routeIs('login')"> {{ __('Login') }}</x-nav-link>
-                    @endguest
-
                 </div>
+            </div>
+
+            <div class="flex space-x-4 sm:space-x-8 sm:-my-px">
+                @auth
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')"> {{ __('Dashboard') }}</x-nav-link>
+                @endauth
+
+                @auth
+                    @if (auth()->user()->role === 'admin')
+                        <x-nav-link :href="route('admin')" :active="request()->routeIs('admin-panel')"> {{ __('Admin Panel') }} </x-nav-link>
+                    @endif
+                @endauth
+
+                @auth
+                    <x-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')"> {{ __('Profile') }} </x-nav-link>
+                @endauth
+
+                @guest
+                    <x-nav-link :href="route('login')" :active="request()->routeIs('login')"> {{ __('Login') }}</x-nav-link>
+                @endguest
             </div>
         </div>
     </div>
