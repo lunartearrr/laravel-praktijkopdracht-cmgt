@@ -35,6 +35,7 @@
                     <x-nav-link :href="route('login')" :active="request()->routeIs('login')"> {{ __('Login') }}</x-nav-link>
                 @endguest
             </div>
+
         </div>
     </div>
 </nav>
