@@ -13,6 +13,7 @@
     <x-input-label class="flex">
         <input placeholder="Search games..." class="w-full border-2">
     </x-input-label>
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
 
     <div class="pt-10">
         <p class="text-sm">Zie hier een overzicht van indie games. Je kan ze bekijken, beoordelen en zoeken op

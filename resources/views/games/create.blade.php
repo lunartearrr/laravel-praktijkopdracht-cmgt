@@ -1,5 +1,6 @@
 <x-app-layout>
-    <form action="{{ route('games.store') }}" method="post" class="p-5">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
+    <form action="{{ route('games.store') }}" method="post" class="py-12 w-full">
         @csrf
 
         <h1 class="font-bold text-xl pb-5">Add a new game</h1>
@@ -35,4 +36,5 @@
             <x-primary-button>{{ __('Save') }}</x-primary-button>
         </div>
     </form>
+    </div>
 </x-app-layout>

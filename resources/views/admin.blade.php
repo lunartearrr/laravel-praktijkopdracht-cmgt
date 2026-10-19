@@ -5,9 +5,11 @@
         </h2>
     </x-slot>
 
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
+
     @auth
         @if (auth()->user()->role === 'admin')
-            <div class="p-5">
+            <div class="py-12">
                 <p class="text-sm">As an admin, you can add games!</p>
                 <div class="flex justify-end m-5">
                     <a href="{{ route('games.create') }}" class="">
@@ -17,4 +19,5 @@
             </div>
         @endif
     @endauth
+    </div>
 </x-app-layout>
