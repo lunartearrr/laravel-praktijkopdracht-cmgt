@@ -20,8 +20,11 @@
     </div>
 
     <div class="grid grid-cols-3">
+
         @foreach ($games as $game)
-            <x-game-card :game="$game"/>
+            <a href="{{ route('games.show', $game) }}">
+                <x-game-card :game="$game"/>
+            </a>
         @endforeach
     </div>
 
