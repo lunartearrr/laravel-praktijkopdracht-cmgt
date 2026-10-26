@@ -1,58 +1,67 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Praktijkopdracht
+Voor het praktijkdeel is het de bedoeling om een zelfgekozen webapplicatie te ontwikkelen welke qua complexiteit vergelijkbaar is met de Chess Puzzles opdracht. Onderwerpen zoals hieronder zullen worden aangehaald in het mondeling. Het is aan jou de taak om toe te lichten hoe dit onderwerp is teruggekomen in de praktijkopdracht en welke keuzes je hierin hebt gemaakt. Met name de onderbouwing is belangrijk tijdens het mondeling.
+Het moet duidelijk worden of je zelfstandig in staat bent geweest om een framework onder de knie te krijgen, de richtlijnen van het framework hebt kunnen volgen en daar uiteindelijk een applicatie in hebt kunnen bouwen.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Verloop mondeling toets
+- Tonen van de wekelijkse voortgang op Github. Er wordt in de beoordeling gelet op een evenredige belasting over de periode, zonder piekbelasting. 
+- Korte toelichting (van max 5 min) door de student in de browser van de belangrijkste features van de uitgewerkte applicatie 
+- Verdiepende vragen naar de verplichte criteria zoals hieronder benoemd. In de beoordeling wordt gelet op verantwoording van keuzes en of de werking begrepen is en of de handeling gereproduceerd zou kunnen worden in een toekomstig project. 
+- Steekproefsgewijs vragen over de OWASP top 10. Hoe komt een onderdeel uit deze lijst terug in het framework of hoe heb je het zelf toegepast. 
+- Steekproefsgewijs vraag over OTAP. In de beoordeling wordt gekeken naar:
+- Weet wat komt kijken bij de inrichting naar een live/productie omgeving 
+- Snap waar al je configuraties binnen jouw framework staan 
+- Je kunt uitleggen hoe en wat moet worden aangepast voor een deployment naar een productie-omgeving (denk aan: database, instellingen, code, enz.). 
+- Als het is gelukt om de applicatie op een aparte server in productie te zetten levert dit automatisch 1 punt op voor het onderdeel OTAP.
+-----------------------------------
 
-## About Laravel
+## Verplichte criteria
+### Beveiliging
+- Inloggen: bepaalde functionaliteit is afgeschermd voor alleen ingelogde gebruikers, maakt niet uit welke gebruiker, als je maar bent ingelogd als rol ‘gebruiker’ 
+- Validatie: bij invoervelden wordt gebruik gemaakt van verplichte velden, en/of velden met controle op inhoud (denk aan een postcode of emailadres), gebruiker krijgt foutmeldingen te zien (deze zijn NIET te omzeilen door bijv. javascript uit te zetten…)
+- Verschillende rollen (dus meerdere soorten gebruikers), bijvoorbeeld 
+- Admin rol 
+- Gebruiker rol 
+- Verschillende rechten 
+- Admin gedeelte alleen toegankelijk voor ingelogde admin 
+- Gebruiker heeft eigen afgeschermde deel waarin hij zijn gegevens kan aanpassen. 
+- Bij het aanmaken van een nieuw item (bijv. een schaakpuzzel) mag alleen de uploader het item wijzigen. Een andere gebruik kan hier niet bij (door er bijvoorbeeld naar te dieplinken).
+-----------------------------------
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Zoeken & Filteren
+- Vrije tekst: zoekveld met vrije tekst, zoekt in meerdere kolommen (bijvoorbeeld in naam en ‘bericht’), hoeft niet in het hele systeem te zoeken, mag ook voor een specifieke lijst met data (bijv. nieuwsberichten). 
+- filtermogelijkheid: dmv dropdownlist. Bijvoorbeeld alle nieuwsberichten van categorie 1 of 2 zien 
+- combinatie van zoeken EN filteren, of filteren op meerdere categorieën levert meerwaarde op voor het onderdeel complexiteit, mits de werking ook is begrepen en goed is toegelicht.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Beveiliging
+- OWASP top 10 
+- Schakelen van status met button in lijst 
+- bijvoorbeeld aan/uit, actief/niet actief 
+- MOET via een post 
+- MOET naar aparte action in een controller 
+- mag ook via Ajax
+-----------------------------------
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Diepere validatie:
+Voer voor een actie naar keuze een extra validatie toe, waarbij de gebruiker deze actie pas mag uitvoeren nadat hij iets anders een x aantal keer heeft gedaan. (licht dit toe in je assessment)
 
-## Learning Laravel
+**Bijvoorbeeld bij een forum:**
+een gebruiker mag pas een topic openen als er minimaal 5 reacties gegeven zijn.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+**Bijvoorbeeld bij review systeem:**
+een gebruiker mag een review plaatsen als er op  minimaal 5 verschillende dagen is ingelogd.
+Let op, het tellen van deze eis moet met een losse query (Eloquent) gedaan worden. Het is niet toegestaan om hiervoor een apart veld in de database voor te maken of om zelf een teller bij te houden in de code of de frontend.
+-----------------------------------
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
-
-## Agentic Development
-
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
-
-```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
-```
-
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Voorbeeldvragen
+- specifieke oplossingen vanuit jouw framework (ken je ze, waarom evt niet gekozen?)
+- bijvoorbeeld: hoe gaat je framework om met beveiliging? 
+- bijvoorbeeld: hoe gaat je framework om met databases? 
+- bijvoorbeeld: aan welke eisen moet een ‘live’ server voldoen? 
+- bijvoorbeeld: toelichten waarom je iets niet volgens de richtlijn hebt gedaan. 
+- algemene MVC vragen (ken je ze, en hoe zit dat in jouw framework)
+- bijvoorbeeld: wat zijn layouts/partials, en hoe zit dat in jouw framework? 
+- bijvoorbeeld: wat is de taak van een controller? 
+- bijvoorbeeld: wat is een sql injection, en hoe beveilig je hiertegen? 
+- specifieke vragen m.b.t. hoe je iets hebt gebouwd (technisch in je code)
+- bijvoorbeeld: hoe heb je verschillende rollen geïmplementeerd?
+-----------------------------------
