@@ -12,6 +12,14 @@
             </div>
         @endif
 
+        @if (session('success-delete'))
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6 pt-5">
+                <div class="p-3 bg-red-100 text-red-700 rounded-xl font-bold border-red-700 border-2">
+                    {{ session('success-delete') }}
+                </div>
+            </div>
+        @endif
+
         @auth
             @if (auth()->user()->role === 'admin')
                 <div class="py-12">
@@ -25,7 +33,7 @@
 
                     <div class="grid grid-cols-3">
                         @foreach ($games as $game)
-                                <x-game-card-admin :game="$game"/>
+                            <x-game-card-admin :game="$game"/>
                         @endforeach
                     </div>
                 </div>

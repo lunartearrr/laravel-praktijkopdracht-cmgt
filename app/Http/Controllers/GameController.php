@@ -24,7 +24,7 @@ class GameController extends Controller
 
         Game::create($validated);
 
-        return redirect()->route('home')->with('success', 'Game created!');
+        return redirect()->route('admin')->with('success', 'Game created!');
     }
 
     public function show(Game $game)
@@ -54,13 +54,13 @@ class GameController extends Controller
 
         $game->save();
 
-        return redirect()->route('admin', $game)->with('success', 'Game updated!');
+        return redirect()->route('admin', $game)->with('success', 'Game edited!');
     }
 
     public function destroy(Game $game)
     {
         $game->delete();
 
-        return redirect()->route('home')->with('success-delete', 'Game deleted!');
+        return redirect()->route('admin')->with('success-delete', 'Game deleted!');
     }
 }
