@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Game;
 
 
 class AdminController extends Controller
 {
     public function index()
     {
-        return view('admin');
+        $games = Game::all();
+        return view('admin', compact('games'));
     }
 }
 
