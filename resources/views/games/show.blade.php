@@ -1,5 +1,6 @@
 <x-app-layout>
     <div class="max-w-2xl mx-auto p-6">
+
         <h1 class="font-bold text-xl pb-5">Selected game</h1>
 
         <div class="flex pb-2">
@@ -19,7 +20,7 @@
 
         <div class="flex flex-col">
             <h2 class="mb-2 font-bold">Ratings </h2>
-{{--            <p class="">{{ $game->reviews }}</p>--}}
+            {{--            <p class="">{{ $game->reviews }}</p>--}}
             @guest
                 <a href="{{ route('login') }}" class="underline text-gray-500 font-semibold hover:text-gray-700">
                     Sign in to rate or review!
