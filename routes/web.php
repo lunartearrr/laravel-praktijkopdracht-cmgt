@@ -18,13 +18,15 @@ Route::middleware('auth')->group(function () {
         return view('dashboard');
     })->name('dashboard');
 
-    Route::resource('games', GameController::class)->except(['index', 'show']);
-
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
-    Route::get('/admin', [AdminController::class,'index'])->name('admin');
+// Alleen voor admins
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+    Route::resource('games', GameController::class)->except(['index', 'show']);
 });
 
 // Iedereen kan dit zien
