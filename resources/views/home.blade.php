@@ -1,29 +1,41 @@
 <x-app-layout class="">
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Home') }}
-        </h2>
-    </x-slot>
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-10 space-y-8">
+        <h1 class="font-semibold text-2xl text-gray-800">{{ __('Home') }}</h1>
 
-    <x-input-label class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6 mt-8 rounded">
-        <input placeholder="Search games..." class="w-full border-2">
-    </x-input-label>
+        <form method="GET" action="{{ route('home') }}" class="flex flex-col sm:flex-row gap-3">
+            <x-text-input type="text" name="search" value="{{ request('search') }}"
+                          placeholder="Search games..." class="flex-1"/>
+
+            <select name="genre" onchange="this.form.submit()"
+                    class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
+                <option value="">All genres</option>
+                @foreach ($genres as $genre)
+                    <option value="{{ $genre->id }}" @selected(request('genre') == $genre->id)>
+                        {{ $genre->name }}
+                    </option>
+                @endforeach
+            </select>
+            <x-primary-button type="submit">{{ __('Search') }}</x-primary-button>
+        </form>
+    </div>
+
 
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-        <div class="pt-10">
-            <p class="text-m">Browse all indie games. Search by name or filter by genre, and see what other players think.</p>
+        <div>
+            <p class="text-m">Browse all indie games. Search by name or filter by genre, and see what other players
+                think.</p>
         </div>
 
-        <div class="grid grid-cols-3">
+        <div class="grid gap-6 grid-cols-3">
 
-            @foreach ($games as $game)
+            @forelse ($games as $game)
                 <a href="{{ route('games.show', $game) }}">
                     <x-game-card :game="$game"/>
                 </a>
-            @endforeach
-
+            @empty
+                <p class="col-span-3 text-gray-500">No games found. Try another search or genre.</p>
+            @endforelse
         </div>
     </div>
-
 </x-app-layout>
 
