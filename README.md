@@ -16,29 +16,48 @@ Het moet duidelijk worden of je zelfstandig in staat bent geweest om een framewo
 
 ## Verplichte criteria
 ### Beveiliging
-- Inloggen: bepaalde functionaliteit is afgeschermd voor alleen ingelogde gebruikers, maakt niet uit welke gebruiker, als je maar bent ingelogd als rol ‘gebruiker’ 
-- Validatie: bij invoervelden wordt gebruik gemaakt van verplichte velden, en/of velden met controle op inhoud (denk aan een postcode of emailadres), gebruiker krijgt foutmeldingen te zien (deze zijn NIET te omzeilen door bijv. javascript uit te zetten…)
-- Verschillende rollen (dus meerdere soorten gebruikers), bijvoorbeeld 
-- Admin rol 
-- Gebruiker rol 
-- Verschillende rechten 
-- Admin gedeelte alleen toegankelijk voor ingelogde admin 
-- Gebruiker heeft eigen afgeschermde deel waarin hij zijn gegevens kan aanpassen. 
-- Bij het aanmaken van een nieuw item (bijv. een schaakpuzzel) mag alleen de uploader het item wijzigen. Een andere gebruik kan hier niet bij (door er bijvoorbeeld naar te dieplinken).
+- [x] Inloggen: bepaalde functionaliteit is afgeschermd voor alleen ingelogde gebruikers, maakt niet uit welke gebruiker, als je maar bent ingelogd als rol ‘gebruiker’
+- [x] Validatie: bij invoervelden wordt gebruik gemaakt van verplichte velden, en/of velden met controle op inhoud (denk aan een postcode of emailadres), gebruiker krijgt foutmeldingen te zien (deze zijn NIET te omzeilen door bijv. javascript uit te zetten…)
+- [x] Verschillende rollen (dus meerdere soorten gebruikers), bijvoorbeeld
+- [x] Admin rol
+- [x] Gebruiker rol
+- [x] Verschillende rechten
+- [x] Admin gedeelte alleen toegankelijk voor ingelogde admin
+- [x] Gebruiker heeft eigen afgeschermde deel waarin hij zijn gegevens kan aanpassen.
+- [ ] Bij het aanmaken van een nieuw item (bijv. een schaakpuzzel) mag alleen de uploader het item wijzigen. Een andere gebruik kan hier niet bij (door er bijvoorbeeld naar te dieplinken).
 -----------------------------------
 
 ## Zoeken & Filteren
-- Vrije tekst: zoekveld met vrije tekst, zoekt in meerdere kolommen (bijvoorbeeld in naam en ‘bericht’), hoeft niet in het hele systeem te zoeken, mag ook voor een specifieke lijst met data (bijv. nieuwsberichten). 
-- filtermogelijkheid: dmv dropdownlist. Bijvoorbeeld alle nieuwsberichten van categorie 1 of 2 zien 
-- combinatie van zoeken EN filteren, of filteren op meerdere categorieën levert meerwaarde op voor het onderdeel complexiteit, mits de werking ook is begrepen en goed is toegelicht.
+- [x] Vrije tekst: zoekveld met vrije tekst, zoekt in meerdere kolommen (bijvoorbeeld in naam en ‘bericht’), hoeft niet in het hele systeem te zoeken, mag ook voor een specifieke lijst met data (bijv. nieuwsberichten).
+- [x] Filtermogelijkheid: dmv dropdownlist. Bijvoorbeeld alle nieuwsberichten van categorie 1 of 2 zien
+- [x] Combinatie van zoeken EN filteren, of filteren op meerdere categorieën levert meerwaarde op voor het onderdeel complexiteit, mits de werking ook is begrepen en goed is toegelicht.
+
+## Nog niet gedaan
+- [ ] **Status schakelen via POST naar een aparte action:** de kolom is_visible staat al in de reviews-migratie, maar er is nog geen route of action. 
+- [ ] **Diepere validatie:** nog niet gebouwd.
 
 ### Beveiliging
-- OWASP top 10 
-- Schakelen van status met button in lijst 
-- bijvoorbeeld aan/uit, actief/niet actief 
-- MOET via een post 
-- MOET naar aparte action in een controller 
-- mag ook via Ajax
+- OWASP top 10
+- Schakelen van status met button in lijst
+- bijvoorbeeld aan/uit, actief/niet actief
+- MOET via een post
+- MOET naar aparte action in een controller
+- Mag ook via Ajax
+
+## Features (voortgang)
+- [x] Inloggen en registreren
+- [x] Rollen: admin en gebruiker
+- [x] Admin gedeelte alleen voor admins (middleware)
+- [x] Gebruiker kan eigen gegevens aanpassen
+- [x] Games toevoegen, bewerken en verwijderen (admin)
+- [x] Server-side validatie met foutmeldingen
+- [x] Zoeken in meerdere kolommen
+- [x] Filteren met dropdown
+- [x] Zoeken en filteren gecombineerd
+- [ ] Reviews schrijven, bewerken en verwijderen
+- [ ] Alleen de maker kan een review bewerken (policy)
+- [ ] Status aan/uit zetten via POST naar aparte controller action
+- [ ] Diepere validatie (review pas na 3 reacties)
 -----------------------------------
 
 ## Diepere validatie:
@@ -65,3 +84,4 @@ Let op, het tellen van deze eis moet met een losse query (Eloquent) gedaan worde
 - specifieke vragen m.b.t. hoe je iets hebt gebouwd (technisch in je code)
 - bijvoorbeeld: hoe heb je verschillende rollen geïmplementeerd?
 -----------------------------------
+
