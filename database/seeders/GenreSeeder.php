@@ -12,7 +12,7 @@ class GenreSeeder extends Seeder
     public function run(): void
 
     {
-        $genres = ['Metroidvania', 'Platformer', 'Adventure', 'Puzzle', 'Roguelike', 'Farming sim', 'Psychological horror'];
+        $genres = ['Metroidvania', 'Platformer', 'Adventure', 'Puzzle', 'Roguelike', 'Farming sim', 'Psychological horror', 'RPG', 'Cozy', 'Management'];
 
         foreach ($genres as $name) {
             Genre::create(['name' => $name]);
