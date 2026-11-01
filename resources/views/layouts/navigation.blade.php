@@ -17,12 +17,8 @@
 
             <div class="flex space-x-4 sm:space-x-8 sm:-my-px">
                 @auth
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')"> {{ __('Dashboard') }}</x-nav-link>
-                @endauth
-
-                @auth
                     @if (auth()->user()->role === 'admin')
-                        <x-nav-link :href="route('admin')" :active="request()->routeIs('admin-panel')"> {{ __('Admin Panel') }} </x-nav-link>
+                        <x-nav-link :href="route('admin')" :active="request()->routeIs('admin')"> {{ __('Admin Panel') }} </x-nav-link>
                     @endif
                 @endauth
 
