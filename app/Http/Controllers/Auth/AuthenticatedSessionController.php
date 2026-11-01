@@ -45,3 +45,4 @@ class AuthenticatedSessionController extends Controller
         return redirect('/');
     }
 }
+return redirect()->intended(route('home', absolute: false));
