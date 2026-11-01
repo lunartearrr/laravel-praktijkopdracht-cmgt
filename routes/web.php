@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\HomeController;
@@ -16,6 +17,11 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::middleware('auth')->group(function () {
     Route::redirect('/dashboard', '/')->name('dashboard');
 
+    Route::post('/games/{game}/reviews', [ReviewController::class, 'store'])->name('reviews.store');
+
+    Route::get('/reviews/{review}/edit', [ReviewController::class, 'edit'])->name('reviews.edit');
+    Route::put('/reviews/{review}', [ReviewController::class, 'update'])->name('reviews.update');
+    Route::delete('/reviews/{review}', [ReviewController::class, 'destroy'])->name('reviews.destroy');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -26,6 +32,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
     Route::resource('games', GameController::class)->except(['index', 'show']);
+    Route::post('/admin/{review}/toggle', [ReviewController::class, 'toggle'])->name('reviews.toggle');
 });
 
 // Iedereen kan dit zien

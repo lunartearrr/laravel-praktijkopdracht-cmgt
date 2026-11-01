@@ -29,7 +29,13 @@ class GameController extends Controller
 
     public function show(Game $game)
     {
-        return view('games.show', compact('game'));
+        $reviews = $game->reviews()
+            ->where('is_visible', true)
+            ->with('user')
+            ->orderByDesc('created_at')
+            ->get();
+
+        return view('games.show', compact('game', 'reviews'));
     }
 
     public function edit(Game $game)
@@ -63,4 +69,5 @@ class GameController extends Controller
 
         return redirect()->route('admin')->with('success-delete', 'Game deleted!');
     }
+
 }
