@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             GenreSeeder::class,
             GameSeeder::class,
             UserSeeder::class,
+            UserLoginSeeder::class,
             ReviewSeeder::class,
         ]);
     }

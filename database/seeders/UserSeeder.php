@@ -22,7 +22,8 @@ class UserSeeder extends Seeder
             'name' => 'John Doe',
             'email' => 'johndoe@example.com',
             'password' => 'johndoe123',
-            'role' => 'user'
+            'role' => 'user',
+            'created_at' => now()->subDays(6),
         ]);
 
         User::forceCreate([
